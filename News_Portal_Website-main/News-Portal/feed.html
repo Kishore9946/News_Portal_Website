@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsPortal | Beyond the Artificial</title>
+    <meta name="description" content="Discover breaking news across Sports, Technology, Business, and delve deep into Human Innovation, Psychology, and pure human creativity.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Auth Guard
+        if (!localStorage.getItem('currentUser')) {
+            window.location.href = 'index.html';
+        }
+    </script>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a0a0c">
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar" id="navbar" style="height: auto; flex-direction: column; align-items: stretch; padding: 0;">
+        <!-- Top Bar: Brand, Search, User Auth -->
+        <div class="top-bar" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; border-bottom: 1px solid var(--border-color); width: 100%;">
+            <a href="#" class="brand">
+                News<span>Portal</span>
+            </a>
+            
+            <div class="search-container" style="flex-grow: 1; max-width: 500px; margin: 0 40px;">
+                <input type="search" id="searchInput" class="search-input" placeholder="Search news..." aria-label="Search news" autocomplete="off" style="width: 100%; border-radius: 8px;">
+            </div>
+
+            <div class="auth-group" style="display: flex; gap: 20px; align-items: center;">
+                <label class="happy-toggle" id="happyToggleBtn" title="Filter to positive news only" style="margin:0;">
+                    <input type="checkbox" id="happyNewsCheckbox">
+                    😊 Happy
+                </label>
+                
+                <div class="user-profile" id="userProfile" style="display: flex; align-items: center; gap: 15px; padding-left: 20px; border-left: 1px solid var(--border-color);">
+                    <div class="user-meta" style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <span id="headerUsername" style="color: #fff; font-size: 0.95rem; font-weight: 600; display: none;">User</span>
+                        <span id="headerRole" style="color: var(--accent-blue); font-size: 0.75rem; font-weight: 500;">Guest</span>
+                    </div>
+                    <button id="adminBtn" style="display:none; background: var(--accent-blue); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: transform 0.2s;">Dashboard</button>
+                    <button id="logoutBtn" style="background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.5); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: background 0.2s;">Logout</button>
+                </div>
+            </div>
+
+            <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">
+                <svg viewBox="0 0 24 24" fill="none" class="hamburger-icon">
+                    <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Bottom Bar: Categories -->
+        <div class="bottom-bar" style="width: 100%; background: rgba(0,0,0,0.2);">
+            <nav class="nav-links container" id="navLinks" style="display: flex; gap: 12px; padding: 12px 40px; overflow-x: auto; white-space: nowrap; scrollbar-width: none;">
+                <button class="category-btn active" data-category="trending">Trending</button>
+                <button class="category-btn" data-category="sports">Sports</button>
+                <button class="category-btn" data-category="world">World</button>
+                <button class="category-btn" data-category="technology">Technology</button>
+                <button class="category-btn" data-category="business">Business</button>
+                <button class="category-btn" data-category="entertainment">Entertainment</button>
+                <button class="category-btn" data-category="health">Health</button>
+                <button class="category-btn" data-category="science">Science</button>
+                <button class="category-btn" data-category="psychology">Psychology</button>
+                <button class="category-btn" data-category="ideas">Inventions</button>
+                <button class="category-btn human-btn" data-category="human">Human Innovation ✨</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <!-- Hero Section -->
+        <section class="hero minimal-variant" id="heroSection">
+            <!-- Advanced Minimalist CSS Background -->
+            <div class="mesh-gradient-bg">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+                <div class="orb orb-3"></div>
+                <div class="grain-overlay"></div>
+            </div>
+            <div class="hero-overlay-minimal"></div>
+            <div class="container hero-content">
+                <span class="hero-badge">Worldwide Breaking</span>
+                <h1 class="hero-title">The Future Unfolds:<br><span class="highlight">Humanity & Machines Converge</span></h1>
+                <p class="hero-excerpt">Explore the latest developments across the globe. Witness how human ingenuity outshines artificial limitations in unexpected ways.</p>
+                <button class="read-more-btn" onclick="document.getElementById('mainContent').scrollIntoView({behavior: 'smooth'})">Explore Headlines <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            </div>
+        </section>
+
+        <div id="mainContent" class="container">
+            <!-- Dynamic Category Header -->
+            <div class="section-header">
+                <div>
+                    <h2 id="currentCategoryTitle">Top Trending Stories</h2>
+                    <p id="currentCategoryDesc" class="section-subtitle">The most read news right now.</p>
+                </div>
+                <div class="header-line"></div>
+            </div>
+
+            <!-- Loader -->
+            <div class="loader-container" id="loader">
+                <div class="skeleton-grid">
+                    <div class="skeleton-card">
+                        <div class="skeleton skeleton-img"></div>
+                        <div class="skeleton-content">
+                            <div class="skeleton skeleton-text skeleton-title"></div>
+                            <div class="skeleton skeleton-text"></div>
+                            <div class="skeleton skeleton-text"></div>
+                        </div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton skeleton-img"></div>
+                        <div class="skeleton-content">
+                            <div class="skeleton skeleton-text skeleton-title"></div>
+                            <div class="skeleton skeleton-text"></div>
+                            <div class="skeleton skeleton-text"></div>
+                        </div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton skeleton-img"></div>
+                        <div class="skeleton-content">
+                            <div class="skeleton skeleton-text skeleton-title"></div>
+                            <div class="skeleton skeleton-text"></div>
+                            <div class="skeleton skeleton-text"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState">
+                <img src="images/empty_state_news.png" alt="Check back later" class="empty-state-img">
+                <h3>No articles found</h3>
+                <p>We couldn't find any results for your query. Please check back later or try another source.</p>
+            </div>
+
+            <!-- News Feed Grid -->
+            <section class="news-grid" id="newsGrid">
+                <!-- News cards injected via JS -->
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>News<span>Portal</span></h3>
+                <p>Curating the best of global news, technology, and irreplaceable human creativity. Elevating awareness in the AI age.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <a href="#">World News</a>
+                    <a href="#">Technology</a>
+                    <a href="#">Sports</a>
+                    <a href="#">Business</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Special</h4>
+                    <a href="#">Human Innovation</a>
+                    <a href="#">Psychology</a>
+                    <a href="#">Inventions & Ideas</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 NewsPortal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div>
+                    <h4 style="margin: 0; font-size: 1rem; color: #fff;">NewsPortal Assistant</h4>
+                    <p style="margin: 0; font-size: 0.8rem; color: var(--text-secondary);">Ask me about today's news</p>
+                </div>
+                <button class="close-chat" id="closeChat" aria-label="Close Chat">&times;</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="msg bot-msg">Hello! I'm your AI news assistant. What would you like to know about today? (Tip: Ask "What's the latest in Sports?" or "Tell me about Innovation")</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Ask about the news..." autocomplete="off">
+                <button id="sendChat" aria-label="Send Message">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </div>
+        </div>
+        <button class="chat-toggle" id="chatToggle" aria-label="Open Chat">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Profile setup
+        const currentUser = localStorage.getItem('currentUser');
+        const role = localStorage.getItem('userRole');
+        
+        if (currentUser) {
+            const usernameEl = document.getElementById('headerUsername');
+            const roleEl = document.getElementById('headerRole');
+            
+            // Show avatar visually + name
+            usernameEl.innerHTML = `<img src="https://ui-avatars.com/api/?name=${currentUser}&background=3b82f6&color=fff&rounded=true&size=24" style="vertical-align: middle; margin-right: 6px;"> ${currentUser}`;
+            usernameEl.style.display = 'block';
+            
+            if (role) {
+                roleEl.innerText = role === 'admin' ? "Administrator" : "Free User";
+                roleEl.style.color = role === 'admin' ? "#ef4444" : "var(--text-secondary)";
+            }
+        }
+        
+        if (role === 'admin') {
+            document.getElementById('adminBtn').style.display = 'block';
+            document.getElementById('adminBtn').addEventListener('click', () => {
+                window.location.href = 'admin.html';
+            });
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('userRole');
+            window.location.href = 'index.html';
+        });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(err => console.log('SW setup skipped locally.'));
+            });
+        }
+    </script>
+</body>
+</html>

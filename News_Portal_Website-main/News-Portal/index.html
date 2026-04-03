@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsPortal | Authentication</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific overrides for purely auth page layout */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        .auth-container {
+            position: relative;
+            z-index: 10;
+            background: rgba(18, 18, 22, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+            text-align: center;
+        }
+
+        .auth-brand {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
+        .auth-brand span {
+            color: var(--accent-blue);
+        }
+
+        .role-selector {
+            display: flex;
+            background: rgba(0,0,0,0.5);
+            border-radius: 30px;
+            padding: 5px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .role-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 25px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .role-btn.active {
+            background: var(--accent-blue);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .role-admin.active {
+            background: #ef4444; /* Admin reddish tint */
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+        }
+
+        .auth-input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .auth-input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .auth-input-group input {
+            width: 100%;
+            padding: 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .auth-input-group input:focus {
+            border-color: var(--accent-blue);
+        }
+
+        .auth-submit {
+            width: 100%;
+            padding: 15px;
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            margin-top: 10px;
+        }
+
+        .auth-submit:hover {
+            background: #e5e5e5;
+            transform: translateY(-2px);
+        }
+
+        .error-msg {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            min-height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Advanced Minimalist CSS Background from original design -->
+    <div class="mesh-gradient-bg" style="position:fixed; width:100vw; height:100vh;">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="grain-overlay"></div>
+    </div>
+    <div class="hero-overlay-minimal" style="position:fixed; width:100vw; height:100vh;"></div>
+
+    <div class="auth-container">
+        <div class="auth-brand">News<span>Portal</span></div>
+        
+        <div class="role-selector">
+            <button class="role-btn active" id="roleUser">User</button>
+            <button class="role-btn role-admin" id="roleAdmin">Administrator</button>
+        </div>
+
+        <h2 id="authTitle" style="font-family: 'Outfit'; margin-bottom: 8px;">Welcome Back</h2>
+        <p id="authSubtitle" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 30px;">Sign in to access personalized global news.</p>
+
+        <form id="authForm">
+            <div class="auth-input-group">
+                <label for="username">Username or Email</label>
+                <input type="text" id="username" placeholder="john@example.com" required>
+            </div>
+            <div class="auth-input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+            
+            <button type="submit" class="auth-submit">Sign In / Log In</button>
+            <div id="errorMsg" class="error-msg"></div>
+        </form>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

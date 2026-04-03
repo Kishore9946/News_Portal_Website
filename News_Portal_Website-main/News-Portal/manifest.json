@@ -1,0 +1,21 @@
+{
+  "name": "NewsPortal | Beyond the Artificial",
+  "short_name": "NewsPortal",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0c",
+  "theme_color": "#3b82f6",
+  "description": "Discover breaking globally curated news and pure human creativity.",
+  "icons": [
+    {
+      "src": "images/news_flash_placeholder.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/news_flash_placeholder.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
