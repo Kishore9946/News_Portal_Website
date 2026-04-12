@@ -76,29 +76,29 @@
     <main>
         <!-- Hero Section -->
         <!-- Hero Section -->
-        <section class="hero minimal-variant" id="heroSection">
+        <section class="hero minimal-variant" id="heroSection" data-parallax data-parallax-speed="0.5">
             <!-- Advanced Minimalist CSS Background -->
-            <div class="mesh-gradient-bg">
+            <div class="mesh-gradient-bg" data-parallax-bg>
                 <div class="orb orb-1"></div>
                 <div class="orb orb-2"></div>
                 <div class="orb orb-3"></div>
                 <div class="grain-overlay"></div>
             </div>
             <div class="hero-overlay-minimal"></div>
-            <div class="container hero-content">
-                <span class="hero-badge">Worldwide Breaking</span>
-                <h1 class="hero-title">The Future Unfolds:<br><span class="highlight">Humanity & Machines Converge</span></h1>
-                <p class="hero-excerpt">Explore the latest developments across the globe. Witness how human ingenuity outshines artificial limitations in unexpected ways.</p>
-                <button class="read-more-btn" onclick="document.getElementById('mainContent').scrollIntoView({behavior: 'smooth'})">Explore Headlines <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <div class="container hero-content" data-animate data-animation="slide-up">
+                <span class="hero-badge" data-animate data-animation="fade-in">Worldwide Breaking</span>
+                <h1 class="hero-title" data-text-reveal data-animate data-animation="slide-up">The Future Unfolds:<br><span class="highlight">Humanity & Machines Converge</span></h1>
+                <p class="hero-excerpt" data-animate data-animation="slide-up">Explore the latest developments across the globe. Witness how human ingenuity outshines artificial limitations in unexpected ways.</p>
+                <button class="read-more-btn" data-animate data-animation="zoom-in" onclick="document.getElementById('mainContent').scrollIntoView({behavior: 'smooth'})">Explore Headlines <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
             </div>
         </section>
 
         <div id="mainContent" class="container">
             <!-- Dynamic Category Header -->
-            <div class="section-header">
+            <div class="section-header" data-animate data-animation="slide-left">
                 <div>
-                    <h2 id="currentCategoryTitle">Top Trending Stories</h2>
-                    <p id="currentCategoryDesc" class="section-subtitle">The most read news right now.</p>
+                    <h2 id="currentCategoryTitle" data-text-reveal>Top Trending Stories</h2>
+                    <p id="currentCategoryDesc" class="section-subtitle" data-animate data-animation="fade-in">The most read news right now.</p>
                 </div>
                 <div class="header-line"></div>
             </div>
@@ -150,25 +150,25 @@
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
-            <div class="footer-brand">
+            <div class="footer-brand" data-animate data-animation="slide-left">
                 <h3>News<span>Portal</span></h3>
                 <p>Curating the best of global news, technology, and irreplaceable human creativity. Elevating awareness in the AI age.</p>
             </div>
             <div class="footer-links">
-                <div class="footer-col">
+                <div class="footer-col" data-animate data-animation="slide-up">
                     <h4>Categories</h4>
                     <a href="#">World News</a>
                     <a href="#">Technology</a>
                     <a href="#">Sports</a>
                     <a href="#">Business</a>
                 </div>
-                <div class="footer-col">
+                <div class="footer-col" data-animate data-animation="slide-up">
                     <h4>Special</h4>
                     <a href="#">Human Innovation</a>
                     <a href="#">Psychology</a>
                     <a href="#">Inventions & Ideas</a>
                 </div>
-                <div class="footer-col">
+                <div class="footer-col" data-animate data-animation="slide-up">
                     <h4>Company</h4>
                     <a href="#">About Us</a>
                     <a href="#">Contact</a>
@@ -176,7 +176,7 @@
                 </div>
             </div>
         </div>
-        <div class="container footer-bottom">
+        <div class="container footer-bottom" data-animate data-animation="fade-in">
             <p>&copy; 2026 NewsPortal. All rights reserved.</p>
         </div>
     </footer>
@@ -208,6 +208,7 @@
         </button>
     </div>
 
+    <script src="scroll-animations.js"></script>
     <script src="app.js"></script>
     <script>
         // Profile setup

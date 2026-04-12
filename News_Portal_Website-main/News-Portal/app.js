@@ -162,6 +162,8 @@ function renderCards(articles) {
         
         const card = document.createElement('article');
         card.className = `news-card ${isFeatured}`;
+        card.setAttribute('data-animate', '');
+        card.setAttribute('data-animation', index % 2 === 0 ? 'slide-left' : 'slide-right');
         
         // Escape quotes to prevent breaking the onclick handlers
         const safeTitle = (article.title || '').replace(/'/g, "\\'").replace(/"/g, "&quot;");

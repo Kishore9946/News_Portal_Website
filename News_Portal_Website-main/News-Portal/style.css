@@ -698,6 +698,316 @@ footer {
     line-height: 1;
 }
 
+/* ========== SCROLL ANIMATIONS ========== */
+
+/* Hero Parallax Effect */
+.hero {
+    perspective: 1000px;
+}
+
+.mesh-gradient-bg {
+    will-change: transform;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Slide In From Left */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide In From Right */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide In From Bottom */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Zoom In Animation */
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Rotate In Animation */
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-10deg) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+/* Scroll Animation Classes */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: opacity, transform;
+}
+
+.scroll-animate.fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.scroll-animate.slide-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.scroll-animate.slide-right {
+    animation: slideInRight 0.6s ease-out forwards;
+}
+
+.scroll-animate.slide-up {
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+.scroll-animate.zoom-in {
+    animation: zoomIn 0.6s ease-out forwards;
+}
+
+.scroll-animate.rotate-in {
+    animation: rotateIn 0.6s ease-out forwards;
+}
+
+/* Staggered animation delays */
+.scroll-animate:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.scroll-animate:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.scroll-animate:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.scroll-animate:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.scroll-animate:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.scroll-animate:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+/* News Card Scroll Animations */
+.news-card.scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.section-header.scroll-animate {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+/* Parallax Background Effect */
+.hero.parallax {
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+}
+
+/* Image background scroll effect */
+.scroll-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-bg img {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+/* Floating animation on scroll */
+.float-on-scroll {
+    will-change: transform;
+}
+
+/* Text reveal animation */
+@keyframes textReveal {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.text-reveal {
+    animation: textReveal 0.8s ease-out forwards;
+}
+
+/* Glow animation on scroll */
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+    }
+}
+
+.scroll-glow {
+    animation: glowPulse 2s ease-in-out forwards;
+}
+
+/* Blur fade effect */
+.scroll-blur {
+    filter: blur(0px);
+    opacity: 1;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.scroll-blur.out-of-view {
+    filter: blur(2px);
+    opacity: 0.7;
+}
+
+/* Progress indicator */
+.scroll-progress-bar {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-blue), #8b5cf6);
+    width: 0%;
+    z-index: 999;
+    will-change: width;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    pointer-events: none;
+}
+
+.scroll-dot {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--accent-blue);
+    border-radius: 50%;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.scroll-dot.active {
+    opacity: 1;
+    background: var(--accent-blue);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Scroll-triggered counter animation */
+@keyframes counterUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.counter-animate {
+    animation: counterUp 0.6s ease-out forwards;
+}
+
+/* Enhanced hover effect for cards on scroll */
+.news-card.scroll-animate:hover {
+    transform: translateY(-12px);
+}
+
+/* Responsive adjustments for scroll animations */
+@media (max-width: 768px) {
+    .scroll-animate {
+        animation-duration: 0.5s !important;
+    }
+
+    .scroll-progress-bar {
+        height: 2px;
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
 .close-chat:hover {
     color: white;
 }
